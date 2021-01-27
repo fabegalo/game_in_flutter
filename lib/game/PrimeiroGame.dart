@@ -13,6 +13,7 @@ import 'componentes/dino.dart';
 import 'dart:math';
 
 class PrimeiroGame extends BaseGame {
+  double velocity = 2;
   Size screenSize;
   double tileSize;
   Background background;
@@ -40,19 +41,16 @@ class PrimeiroGame extends BaseGame {
     double y = rnd.nextDouble() * (screenSize.height - tileSize);
 
     //flies.add(HouseFly(this, x, y));
-    //flies.add(HouseFly(this, x, y));
-    //flies.add(HouseFly(this, x, y));
-    //flies.add(HouseFly(this, x, y));
-    //flies.add(HouseFly(this, x, y));
   }
 
   @override
   void render(Canvas canvas) {
     // TODO: implement render
-    background.render(canvas);
 
-    flies.forEach((Fly fly) => fly.render(canvas));
+    background.render(canvas);
     dinos.forEach((WalkingBox dinos) => dinos.render(canvas));
+    flies.forEach((Fly fly) => fly.render(canvas));
+
     super.render(canvas);
   }
 
@@ -63,26 +61,40 @@ class PrimeiroGame extends BaseGame {
     flies.removeWhere((Fly fly) => fly.isOffScreen);
 
     dinos.forEach((WalkingBox dinos) => dinos.update(t));
+
+    background.update(t);
+
+    //print(velocity);
+
+    if (velocity >= 10) {
+      velocity = 10;
+    }
+
     super.update(t);
   }
 
   @override
   void resize(Size size) {
     screenSize = size;
+    print(size);
     tileSize = screenSize.width / 9;
     super.resize(size);
   }
 
   void onTapDown(TapDownDetails d) {
-    flies.forEach((Fly fly) {
-      if (fly.flyRect.contains(d.globalPosition)) {
-        fly.onTapDown();
-      }
-    });
+    print(d.kind);
+    print('Bati na tela!');
+    velocity++;
 
     dinos.forEach((WalkingBox dinos) {
       if (dinos.flyRect.contains(d.globalPosition)) {
         dinos.onTapDown();
+      }
+    });
+
+    flies.forEach((Fly fly) {
+      if (fly.flyRect.contains(d.globalPosition)) {
+        fly.onTapDown();
       }
     });
   }

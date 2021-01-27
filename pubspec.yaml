@@ -50,8 +50,11 @@ flutter:
     - assets/images/crate.jpg
     - assets/images/background.jpg
     - assets/images/dino.png
+    - assets/images/dino1.png
+    - assets/images/dino2.png
     - assets/images/flies/house-fly-1.png
     - assets/images/flies/house_dead.png
+    - assets/images/sprite.png
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware.

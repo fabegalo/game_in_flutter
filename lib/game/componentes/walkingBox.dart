@@ -12,21 +12,10 @@ class WalkingBox {
   Rect flyRect;
   bool isDead = false;
   bool isOffScreen = false;
-  Offset targetLocation;
   bool isJumping = false;
   int jumpCount = 0;
 
-  double get speed => game.tileSize * 3;
-
-  WalkingBox(this.game) {
-    setTargetLocation();
-  }
-
-  void setTargetLocation() {
-    double x = 15 * (game.screenSize.width - (game.tileSize * 2.025));
-    double y = 30 * (game.screenSize.height - (game.tileSize * 2.025));
-    targetLocation = Offset(x, y);
-  }
+  WalkingBox(this.game);
 
   void render(Canvas c) {
     if (isDead) {
@@ -43,7 +32,7 @@ class WalkingBox {
       //   isOffScreen = true;
       // }
     } else {
-      flyingSpriteIndex += 30 * t;
+      flyingSpriteIndex += game.velocity * t;
       if (flyingSpriteIndex >= 2) {
         flyingSpriteIndex -= 2;
       }
