@@ -1,7 +1,7 @@
 # game_in_flutter
 Jogo em desenvolvimento em Flutter
 
-Prova de conceito
+Demonstração:
 ##
-![](https://github.com/fandangosgroup/CTF---JAVA/blob/master/documentacao/prova%20de%20conceito.gif)
+![](https://github.com/fabegalo/game_in_flutter/blob/main/media/game.gif)
 ##
