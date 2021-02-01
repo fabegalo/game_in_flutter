@@ -8,7 +8,7 @@ void main() async {
   WidgetsFlutterBinding.ensureInitialized();
 
   Util flameUtil = Util();
-  await flameUtil.setLandscape();
+  await flameUtil.setPortraitUpOnly();
   await flameUtil.setOrientation(DeviceOrientation.portraitUp);
 
   PrimeiroGame game = PrimeiroGame();
@@ -20,7 +20,7 @@ void main() async {
 }
 
 class MyApp extends StatelessWidget {
-  PrimeiroGame game;
+  final PrimeiroGame game;
 
   MyApp(this.game);
 
@@ -54,19 +54,21 @@ class _ModalGameState extends State<ModalGame> {
   _ModalGameState(this.game);
 
   Widget build(BuildContext context) {
-    // return Scaffold(
-    //   appBar: AppBar(
-    //     title: Text('Toma no cu!'),
-    //   ),
-    //   body: game.widget,
-    //   floatingActionButton: FloatingActionButton(
-    //     child: Text('Pau no cu!'),
-    //     onPressed: () {
-    //       print('Apertei o floting');
-    //     },
-    //   ),
-    // );
+    return Scaffold(
+      // appBar: AppBar(
+      //   title: Text('App Bar Do Game'),
+      // ),
+      body: game.widget,
+      floatingActionButton: FloatingActionButton(
+        child: game.gameStarted ? Icon(Icons.pause) : Icon(Icons.play_arrow),
+        onPressed: () {
+          game.gameStarted = game.gameStarted ? false : true;
+          setState(() {});
+          print('Apertei o pause!');
+        },
+      ),
+    );
 
-    return game.widget;
+    //return game.widget;
   }
 }

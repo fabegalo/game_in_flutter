@@ -4,8 +4,9 @@
     // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
     "version": "0.2.0",
     "configurations": [
+
         {
-            "name": "game_in_flutter",
+            "name": "game_in_flutter 2",
             "request": "launch",
             "type": "dart"
         }
